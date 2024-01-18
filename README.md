@@ -1,193 +1,164 @@
 # JellySkin-SC
 
-### Vibrant, minimal, and sprinkled with tons of animations <br> CSS theme for Jellyfin
-  
-![npm (tag)](https://img.shields.io/npm/v/jellyskin/latest?style=for-the-badge) ![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hm/jellyskin?label=Downloads&style=for-the-badge) ![GitHub](https://img.shields.io/github/license/prayag17/JellySkin?style=for-the-badge)\
-![GitHub Repo stars](https://img.shields.io/github/stars/prayag17/JellySkin?style=social)
+### 拥有大量动画、活力十足的极简主义Jellyfin CSS主题。
 
-# ℹ️ Usage
+### 适配简繁中文、日语和韩语。
 
-- To use the JellySkin theme copy the line below into "Dashboard -> General -> Custom CSS" and click save, it will apply immediately server-wide to all users on top of any theme they may be using. To remove the theme, clear the "Custom CSS" field and then click save. <b>NOTE: Theme may not work when using Nginx Reverse Proxy. Scroll down below to learn how to fix this.
+### 一切的功劳来自于@prayag17及其他原仓库开发者们，向无私奉献的开发者们致敬。All the contributions are from @prayag17 and other developers. Respect to those selfless developers.
 
-  ```css
-  @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/main.css");
-  ```
+# ℹ️ 使用方法
 
-- To enable Logos add this to custom css:
+- 将以下代码粘贴至"设置->控制台->常规->自定义CSS代码"中，然后点击保存，JellySkin会在几分钟内自动应用，并覆盖所有用户的自定义CSS。如果要停止使用JellySkin，清除“自定义CSS代码”然后点击保存即可。
+
+  注意：JellySkin可能不会在使用Nginx反向代理时正常应用。你可以滚动至页面下方查看解决方法。
 
   ```css
-  @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/logo.css");
+  @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/main.css");
   ```
-  
-- You can also use Jellyfin-Skin-Manager-Plugin : <https://github.com/danieladov/jellyfin-plugin-skin-manager>
-  > **Note** : Jellyfin Skin Manager has not been updated for some time and doesn't have the latest JellySkin css available.
+- 若要启用剧集和电影的Logo图像，请将以下代码附加在下一行:
 
-# 🧩 Addons
+  ```css
+  @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/logo.css");
+  ```
 
-- ## Improve Performance
+# 🧩 附加内容
 
-- ### Remove BackdropFilter
+- ## 提高性能
+- ### 移除背景滤镜
 
-  This remove the frosted glass like effect from every place.
+  附加以下代码，移除背景的毛玻璃效果。
 
-      ```css
-      @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/addons/improvePerformance/removeBackdropFilter.css");
-      ```
 
-- ### Remove scroll fade
+  ```
+  @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/addons/improvePerformance/removeBackdropFilter.css");
+  ```
+- ### 移除顶栏特效
 
-  This remove the faded scroll view
+  附加以下代码，移除顶部菜单的渐变虚化效果。
 
-      ```css
-      @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/addons/improvePerformance/removeFadingScroll.css");
-      ```
 
-- ## Compact Poster
+  ```
+  @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/addons/improvePerformance/removeFadingScroll.css");
+  ```
+- ## 紧凑型海报
 
-    Want to use compact posters instead of normal cards, add this to your custom css:
+  Want to use compact posters instead of normal cards, add this to your custom css:
+
+  若要将普通卡片替换为紧凑型海报（墙），请附加以下代码。
+
+
+  ```css
+  @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/addons/compactPosters.css");
+  ```
+
+  实例:![image](https://user-images.githubusercontent.com/55829513/200132447-5307c19f-97e5-4022-ab42-c5b8bf632d6b.png)
+
+  > 警告：在某些尺寸的屏幕上显示时，其显示效果可能不尽如人意。
+  >
+- ## 可水平滚动的“我的媒体”
+
+  附加以下代码，将水平滚动的“我的媒体”（初始主题样式）带回JellySkin。
+
+
+  ```css
+  @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/addons/horizontalMyMedia.css");
+  ```
+- ## 使用或切换不同的渐变色
+
+  附加以下代码，更改主题渐变色：
+
+
+  > **注意**：请务必将此更改渐变色代码置于main.css代码的下方。此代码不会更改登录界面的背景颜色。
+  >
+
+  - ### Mauve-鱼鳍紫红
+
 
     ```css
-    @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/addons/compactPosters.css");
+    @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/addons/gradients/mauve.css");
     ```
 
-    Example:\
-    ![image](https://user-images.githubusercontent.com/55829513/200132447-5307c19f-97e5-4022-ab42-c5b8bf632d6b.png)
+    示例：![image](https://user-images.githubusercontent.com/55829513/200132732-d188392a-5642-47f7-bb62-f204a85d992e.png)
+  - ### NightSky-午夜极光
 
-    > **Warning** : Compact posters might not look as expected for some screen sizes
-
-- ## Horizontal My Media
-
-    Brings back the horizontal section for My Media
 
     ```css
-    @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/addons/horizontalMyMedia.css");
+    @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/addons/gradients/nightSky.css");
     ```
 
-- ## Using/Changing default gradient accent
+    示例：![image](https://user-images.githubusercontent.com/55829513/200132808-5b02c8e9-29c1-4a6b-ad3c-514588cf717a.png)
+  - ### Sea-静海深蓝
 
-    If you want want to change the default jellyfin gradient accent to some other preset gradient use:
-    > **Note** : Remember to put gradient css files below the main.css file import. Also this won't affect the login mesh background's colors.
-    >
-    - ### Mauve
 
-      ```css
-      @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/addons/gradients/mauve.css");
-      ```
+    ```css
+    @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/addons/gradients/sea.css");
+    ```
 
-      Example:\
-      ![image](https://user-images.githubusercontent.com/55829513/200132732-d188392a-5642-47f7-bb62-f204a85d992e.png)
+    示例：![image](https://user-images.githubusercontent.com/55829513/200132840-984deaf3-c228-4092-be8f-44c325d57782.png)
+  - ### 自定义
 
-  - ### NightSky
+    如果你想添加自定义渐变色：
 
-      ```css
-      @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/addons/gradients/nightSky.css");
-      ```
 
-      Example:\
-      ![image](https://user-images.githubusercontent.com/55829513/200132808-5b02c8e9-29c1-4a6b-ad3c-514588cf717a.png)
+    ```css
+    :root {
+      --accent1-light: YOUR ACCENT COLOR 1(LIGHTER SHADE);
+      --accent1-dark: YOUR ACCENT COLOR 1(DARKER SHADE);
+      --accent1-light-opacity1: YOUR ACCENT COLOR 1(WITH OPACITY 0.4);
+      --accent2-light: YOUR ACCENT COLOR 2(LIGHTER SHADE);
+      --accent2-dark: YOUR ACCENT COLOR 2(DARKER SHADE);
+    }
+    ```
 
-  - ### Sea
+# 💻 主题截图
 
-      ```css
-      @import url("https://cdn.jsdelivr.net/npm/jellyskin@latest/dist/addons/gradients/sea.css");
-      ```
+- ### 登录界面
 
-      Example:\
-      ![image](https://user-images.githubusercontent.com/55829513/200132840-984deaf3-c228-4092-be8f-44c325d57782.png)
+  ![Login_Page](https://github.com/prayag17/JellySkin/assets/55829513/9ca0d0c2-9ada-4e41-93b9-e4281be20d1d)
+- ### 主页
 
-  - ### Custom
+  ![Home Screen](https://user-images.githubusercontent.com/55829513/200134098-6463a6e7-95bb-4af6-a451-b6ac5ef7abad.png)
+- ### 媒体库
 
-      If you need to add your own gradient use:
+  ![LibView](https://user-images.githubusercontent.com/55829513/200133209-413d6e6c-3569-4aaf-9db7-f576c141f519.png)
+- ### 带Logo的详情页
 
-      ```css
-      :root {
-        --accent1-light: YOUR ACCENT COLOR 1(LIGHTER SHADE);
-        --accent1-dark: YOUR ACCENT COLOR 1(DARKER SHADE);
-        --accent1-light-opacity1: YOUR ACCENT COLOR 1(WITH OPACITY 0.4);
-        --accent2-light: YOUR ACCENT COLOR 2(LIGHTER SHADE);
-        --accent2-dark: YOUR ACCENT COLOR 2(DARKER SHADE);
-      }
-      ```
+  ![TitleView](https://user-images.githubusercontent.com/55829513/200133240-075f604d-ae7f-48cb-9a42-445d8f3ef427.png)
+- ### 剧集总览
 
-# 💻 Screenshots
+  ![EpisodeView](https://user-images.githubusercontent.com/55829513/200133258-4eabfc3d-475f-4b42-a496-bc2de60c11a5.png)
+- ### 设置
 
-- ### Login Page
-    ![Login_Page](https://github.com/prayag17/JellySkin/assets/55829513/9ca0d0c2-9ada-4e41-93b9-e4281be20d1d)
-  
-- ### Home Screen
+  ![SettingsView](https://user-images.githubusercontent.com/55829513/200133273-3ff7ba73-bad2-4f7c-88b1-e8298d246587.png)
+- ### 控制台
 
-    ![Home Screen](https://user-images.githubusercontent.com/55829513/200134098-6463a6e7-95bb-4af6-a451-b6ac5ef7abad.png)
+  ![DashboardView](https://user-images.githubusercontent.com/55829513/200133302-5d7e7ac1-201b-4cb4-a839-ee53c5c6a6f2.png)
+- ### 弹窗
 
-- ### Library View
+  ![DialogView](https://user-images.githubusercontent.com/55829513/200133331-ee7838d0-6318-4175-b969-c06647bf65a0.png)
 
-    ![LibView](https://user-images.githubusercontent.com/55829513/200133209-413d6e6c-3569-4aaf-9db7-f576c141f519.png)
+# ❓ 常见问题及修复方法
 
-- ### Title Screen
+- ### Firefox浏览器看不见模糊背景效果。
 
-    ![TitleView](https://user-images.githubusercontent.com/55829513/200133240-075f604d-ae7f-48cb-9a42-445d8f3ef427.png)
+  此段不作翻译，若有需要请看[原仓库英文](https://github.com/prayag17/JellySkin/tree/master?tab=readme-ov-file#unable-to-see-blured-background-in-firefox)。
+- ### 启用 `logo.css` 后，Logo仍不可见。
 
-- ### Episode View
+  媒体库元数据获取问题。一般地，TMDB上包含绝大多数媒体的Logo，请检查媒体库元数据获取来源是否设置有误。
+  此段不作翻译，若有需要请看[原仓库英文](https://github.com/prayag17/JellySkin/tree/master?tab=readme-ov-file#logos-are-not-visible-even-with-logocss)。
+- ### 无背景。
 
-    ![EpisodeView](https://user-images.githubusercontent.com/55829513/200133258-4eabfc3d-475f-4b42-a496-bc2de60c11a5.png)
+  - 在 设置->显示 中勾选 `背景` 选项。
+- ### 解决Nginx反向代理问题。
 
-- ### Settings
+  此段不作翻译，若有需要请看[原仓库英文](https://github.com/prayag17/JellySkin/tree/master?tab=readme-ov-file#fix-for-nginx-reverse-proxy)。
+- ### 如何反馈问题或提出改进建议?
 
-    ![SettingsView](https://user-images.githubusercontent.com/55829513/200133273-3ff7ba73-bad2-4f7c-88b1-e8298d246587.png)
+  - 由于SC版本仅更改了fontfamily，未更改其他任何代码。若有相关建议请前往原仓库issues区 [https://github.com/prayag17/JellySkin/issues](https://github.com/prayag17/JellySkin/issues) 提出。
+  - 点击 `New Issue` 按钮。
+  - 选择适当的模板。
+- ### 如何做出贡献？
 
-- ### Dashboard
-
-    ![DashboardView](https://user-images.githubusercontent.com/55829513/200133302-5d7e7ac1-201b-4cb4-a839-ee53c5c6a6f2.png)
-
-- ### Dialog
-
-    ![DialogView](https://user-images.githubusercontent.com/55829513/200133331-ee7838d0-6318-4175-b969-c06647bf65a0.png)
-
-# ❓ Common Problem Fixes
-
-- ### Unable to see blured background in Firefox
-
-  Deaktiviert From version 70: this feature is behind the `layout.css.backdrop-filter.enabled` preference (needs to be set to true) and the `gfx.webrender.all`  preference (needs to be set to true).
-  To change preferences in Firefox, visit about:config
-  
-- ### Logos are not visible even with `logo.css`
-
-  - Get Fanart Plugin, Dashboard -> Plugin -> Catalog
-  - Enable Fanart as a metadata provider for your libraries in the library settings, Dashboard -> Library -> Click on 3 dots on your Library -> Manage Library -> Scroll to find Metadata provider and enable Fanart in all of them.
-  - Rescan your drive and also enable `Replace Metadata` and scan
-
-- ### Background not visible
-
-  - Go to Settings -> Display -> and enable `Backdrops` option
-
-- ### Fix for Nginx Reverse Proxy
-
-  When using the Nginx Reverse proxy config from the <a href="https://jellyfin.org/docs/general/networking/nginx.html">Jellyfin docs</a> the theme will probably not work by default. (If you are using the subpath config, you can ignore all this.)
-
-  This config includes an CSP (Content Security Policy) with headers that don't allow for loading in external content that are not defined there.
-
-  In the nginx config you should add the URLs of all the CSS files you've imported through the "Custom CSS" box.
-  this:
-
-  ```shell
-  add_header Content-Security-Policy "default-src https: data: blob: http://image.tmdb.org; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.gstatic.com/cv/js/sender/v1/cast_sender.js https://www.youtube.com blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; frame-ancestors 'self'";
-  ```
-
-  becomes (with only adding the default style):
-
-  ```shell
-  add_header Content-Security-Policy "default-src https: data: blob: http://image.tmdb.org; style-src 'self' 'unsafe-inline'https://cdn.jsdelivr.net/npm/jellyskin@latest/main.css; script-src 'self' 'unsafe-inline' https://www.gstatic.com/cv/js/sender/v1/cast_sender.js https://www.youtube.com blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; frame-ancestors 'self'";
-  ```
-
-  If you don't do this the theme will simply not load (reverts back to default theme) and the browser console will spit out an error. Even if you paste in all the CSS, the font will still not load since it is loaded from a disallowed external source.
-
-- ### How to report a Bug or request a Feature?
-
-  - Go to <https://github.com/prayag17/JellySkin/issues>
-  - Click on `New Issue` button
-  - Select the appropriate template
-
-- ### How to contribute
-
-  - Fork this repository.
-  - Add your patch/feature
-  - Create a pull request and thats it
+  - Fork**原仓库。**
+  - 添加补丁或新功能。
+  - 发起pull request。
