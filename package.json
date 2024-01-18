@@ -1,5 +1,5 @@
 {
-	"name": "jellyskin",
+	"name": "jellyskin-sc",
 	"version": "12.4.1",
 	"description": "A vibrant skin for jellyfin made with SASS",
 	"files": [
@@ -34,7 +34,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/prayag17/JellySkin.git"
+		"url": "git+https://github.com/ranzonsan/JellySkin-SC.git"
 	},
 	"keywords": [
 		"jellyfin",
@@ -44,7 +44,7 @@
 	"author": "prayag17",
 	"license": "GPL-3.0-only",
 	"bugs": {
-		"url": "https://github.com/prayag17/JellySkin/issues"
+		"url": "https://github.com/ranzonsan/JellySkin-SC/issues"
 	},
-	"homepage": "https://github.com/prayag17/JellySkin#readme"
+	"homepage": "https://github.com/ranzonsan/JellySkin-SC"
 }
