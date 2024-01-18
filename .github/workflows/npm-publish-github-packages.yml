@@ -9,30 +9,18 @@ on:
       - master
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Prepare Build Invironment 
-        run: npm ci
-      - name: Build
-        run: npm run build
-
   publish-gpr:
-    needs: build
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
+      - name: Prepare Build Invironment 
+        run: npm ci
+      - name: Build
+        run: npm run build
       - name: Release
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
