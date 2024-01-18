@@ -1,4 +1,4 @@
-# JellySkin
+# JellySkin-SC
 
 ### Vibrant, minimal, and sprinkled with tons of animations <br> CSS theme for Jellyfin
   
