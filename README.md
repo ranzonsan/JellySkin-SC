@@ -159,9 +159,13 @@
   当使用 Jellyfin 文档中的 Nginx 反向代理配置时，默认情况下该主题可能无法正常工作。（如果你使用的是 subpath 配置，则可以忽略以下内容。）
   此配置包括一个 CSP（内容安全策略），其标头不允许加载未在此处定义的外部内容。
   在 nginx 配置中，您应该添加通过“自定义 CSS 代码”框导入的所有 CSS 文件的 URL。将：
-  `add_header Content-Security-Policy "default-src https: data: blob: http://image.tmdb.org; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.gstatic.com/cv/js/sender/v1/cast_sender.js https://www.youtube.com blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; frame-ancestors 'self'";`
+  ```
+  add_header Content-Security-Policy "default-src https: data: blob: http://image.tmdb.org; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.gstatic.com/cv/js/sender/v1/cast_sender.js https://www.youtube.com blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; frame-ancestors 'self'";
+  ```
   更改为（仅添加默认样式）：
-  `add_header Content-Security-Policy "default-src https: data: blob: http://image.tmdb.org; style-src 'self' 'unsafe-inline'https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/main.css; script-src 'self' 'unsafe-inline' https://www.gstatic.com/cv/js/sender/v1/cast_sender.js https://www.youtube.com blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; frame-ancestors 'self'";`
+  ```
+  add_header Content-Security-Policy "default-src https: data: blob: http://image.tmdb.org; style-src 'self' 'unsafe-inline'https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/main.css; script-src 'self' 'unsafe-inline' https://www.gstatic.com/cv/js/sender/v1/cast_sender.js https://www.youtube.com blob:; worker-src 'self' blob:; connect-src 'self'; object-src 'none'; frame-ancestors 'self'";
+  ```
   如果不这样做，主题将根本无法加载（恢复为默认主题），浏览器控制台会报错。即使你粘贴了所有 CSS，字体仍然不会加载，因为它是从非法外部来源加载的。
 - ### 如何反馈问题或提出改进建议?
 
