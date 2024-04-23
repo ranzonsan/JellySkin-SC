@@ -1,6 +1,6 @@
 {
 	"name": "jellyskin-sc",
-	"version": "12.4.5",
+	"version": "12.4.6",
 	"description": "A vibrant skin for jellyfin made with SASS",
 	"files": [
 		"/dist"

@@ -20,6 +20,7 @@
   ```css
   @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/logo.css");
   ```
+- 由于jsdelivr在中国大陆的链接性较差，如果在正确添加代码后仍然没有任何改变，你可以自行使用其他cdn。——译者注
 
 # 🧩 附加内容
 
@@ -51,10 +52,11 @@
   @import url("https://cdn.jsdelivr.net/npm/jellyskin-sc@latest/dist/addons/compactPosters.css");
   ```
 
-  实例:![image](https://user-images.githubusercontent.com/55829513/200132447-5307c19f-97e5-4022-ab42-c5b8bf632d6b.png)
+  示例:
+![image](https://user-images.githubusercontent.com/55829513/200132447-5307c19f-97e5-4022-ab42-c5b8bf632d6b.png)
 
   > 警告：在某些尺寸的屏幕上显示时，其显示效果可能不尽如人意。
-  >
+
 - ## 可水平滚动的“我的媒体”
 
   附加以下代码，将水平滚动的“我的媒体”（初始主题样式）带回JellySkin。
@@ -69,7 +71,6 @@
 
 
   > **注意**：请务必将此更改渐变色代码置于main.css代码的下方。此代码不会更改登录界面的背景颜色。
-  >
 
   - ### Mauve-鱼鳍紫红
 
@@ -142,6 +143,7 @@
 - ### Firefox浏览器看不见模糊背景效果。
 
   自 Firefox 70 版本后失效：此选项在 `layout.css.backdrop-filter.enabled` 和 `gfx.webrender.all` 选项均设置为打开（true）后可见。要在 Firefox 中更改首选项，请访问 `about:config`。
+  
   （译者注：原文使用的是Deaktiviert，德语意为失效。）
 - ### 启用 `logo.css` 后，Logo仍不可见。
 
@@ -150,6 +152,7 @@
   - 获取 Fanart 插件。控制台 -> 插件 -> 目录
   - 在媒体库设置中启用 Fanart 作为库的元数据提供程序。控制台 -> 媒体库 -> 单击库上的 3 个点 -> 管理媒体库 -> 滚动以查找图片提供程序，并在所有媒体库中启用 Fanart。
   - 在缺少logo的剧集中，点击剧集内的三个点 -> 修改图片 -> 点击左上角的搜索图标 -> 类型选择商标 -> 勾选“所有语言” -> 选择喜欢的logo -> 点击下载图标，之后logo便会自动刷新。当然，你也可以重新扫描需要更新logo的剧集，不要忘记勾选“覆盖所有图片”选项。
+  
   （译者注：原文第三步为更新所有媒体库，这是不必要的，只需下载logo或更新没有logo的剧集即可。）
 - ### 无背景。
 
