@@ -4,18 +4,12 @@
 @use "../abstract/mixins" as *;
 
 .emby-scroller {
-	mask-image: linear-gradient(
-		to left,
-		transparent,
-		black 0.5em calc(100% - 0.5em),
-		transparent
-	);
-	-webkit-mask-image: linear-gradient(
-		to left,
-		transparent,
-		black 0.5em calc(100% - 0.5em),
-		transparent
-	);
+	overflow: visible !important;
+	margin-top: 0.5em;
+}
+
+.layout-mobile .emby-scroller{
+	overflow-x: scroll !important;
 }
 .card {
 	contain: none !important;
@@ -76,22 +70,55 @@
 	}
 	&:hover .cardImageContainer::after,
 	&:focus-visible .cardImageContainer::after {
-		transform: scale(1.2);
+		transform: scale(1.1);
 	}
-	&[data-type="Person"] {
-		@include actorCard("Person");
-		&:hover .cardContent {
-			filter: brightness(0.3);
+	&.personCard {
+		height: auto;
+		.card {
+			&Padder-overflowPortrait {
+				// padding-bottom: 100% !important;
+				.cardImageIcon {
+					color: transparent !important;
+				}
+			}
+			&Box {
+				position: relative;
+			}
+			&Overlay {
+				&Container {
+					background: transparent !important;
+					// height: calc(100% - 2.825em);
+					z-index: 3;
+				}
+
+				&Button-br {
+					right: 0.5em;
+					bottom: 0.5em;
+				}
+			}
+			&Content {
+				filter: brightness(1);
+				transition: filter $transition-time-default ease-in-out;
+				$image-margin: 1em;
+				margin: $image-margin !important;
+				width: calc(100% - 2*$image-margin);
+				height: calc(100% - 2*$image-margin);
+				border-radius: 100% !important;
+			}
+			&Scalable {
+				height: auto;
+				aspect-ratio: 1;
+				.cardImageContainer::after {
+					background-size: cover;
+				}
+			}
+			&Text {
+			}
 		}
 	}
-	&[data-type="Actor"] {
-		@include actorCard("Actor");
-		&:hover .cardContent {
-			filter: brightness(0.3);
-		}
-	}
-	.cardBox {
-		margin: 0.5em !important;
+	&Box {
+		$card-padding: 1.5em;
+		margin: 0.5em $card-padding $card-padding 0 !important;
 		box-shadow: 0 0 0.5em rgb(0 0 0 / 0.75);
 		background: rgb(0 0 0 / 0.2);
 		border-radius: $rounding-default;
@@ -117,7 +144,7 @@
 	}
 }
 .cardPadder {
-	background: $gradient-dark !important;
+	background: transparent !important;
 	&-square {
 		aspect-ratio: 0 !important;
 		padding: 0;
@@ -156,7 +183,7 @@
 }
 
 .cardOverlayButton {
-	border-radius: $rounding-min;
+	border-radius: 100px !important;
 	span {
 		background: $gradient-icon !important;
 		background-clip: text !important;
@@ -164,20 +191,28 @@
 		transition: $transition-time-fast-1;
 	}
 	&[data-action="resume"] {
-		border-radius: $rounding-min;
+		border-radius: 1000px;
 		padding: 1.5em;
-		background: transparent !important;
+		background: $gradient-default !important;
+		color: white !important;
+		&:hover,
+		&:focus-visible {
+			filter: brightness(0.5);
+		}
 	}
-	&:hover span,
-	&:focus-visible span {
-		color: transparent !important;
+	&:hover,
+	&:focus-visible {
+		transform: scale(1) !important;
 	}
 }
 .cardIndicators,
 .listItemIndicators {
 	@include indicator();
 }
-[data-isfolder="true"]:is([data-type=CollectionFolder],[data-type=UserView]):not([data-type="Series"])
+[data-isfolder="true"]:is(
+		[data-type="CollectionFolder"],
+		[data-type="UserView"]
+	):not([data-type="Series"])
 	.cardText {
 	padding: 0.75em !important;
 }

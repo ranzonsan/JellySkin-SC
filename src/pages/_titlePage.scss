@@ -3,39 +3,87 @@
 @use "../abstract/variables" as *;
 
 #itemDetailPage {
+	--card-width: 14vw;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
 	align-items: flex-start;
-	width: 100vw;
 	overflow-y: auto;
-
-	.mediaInfoItem {
-		border-radius: 10vh;
+	padding: 3.2em !important;
+	.mediaInfoItem.mediaInfoOfficialRating {
+		border-radius: 5px;
+		background: rgb(255 255 255 / 0.8);
+		color: #000;
+		border: none;
+		font-weight: 600;
 		white-space: nowrap;
 	}
 
 	.detailRibbon {
-		height: 7.2em;
-		margin-top: 10vh;
+		height: 60vh;
+		margin-top: 0;
 		background: transparent;
 		font-size: 2.2vh;
 		position: static !important;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
 		.itemMiscInfo {
 			margin-bottom: 0 !important;
 		}
 	}
-	.detailImageContainer .card {
-		position: fixed !important;
-		left: 3.3%;
-		top: calc(50% + 1em);
-		width: 25vw;
-		transform: translateY(-50%);
-		border-radius: $rounding-default;
+	.infoWrapper {
+		display: grid;
+		grid-template-areas:
+			"img text"
+			"img info"
+			"img info";
+		grid-template-columns: var(--card-width) 1fr;
+		column-gap: 2em;
+		row-gap: 1em;
+		grid-template-rows: 1fr auto auto;
+		flex: unset !important;
+		align-items: end;
+		.nameContainer {
+			grid-area: text;
+		}
+		.itemMiscInfo {
+			grid-area: info;
+		}
+		.itemName {
+			font-size: 3em;
+			color: white;
+			&.subtitle {
+				font-size: 1.4em;
+				margin: 0 !important;
+				padding: 0 !important;
+			}
+		}
+	}
+	.detailImageContainer {
+		grid-area: img;
+		padding: 0 !important;
+		width: var(--card-width);
+		.card {
+			width: 100%;
+			position: static !important;
+			border-radius: $rounding-default;
+			.cardBox {
+				margin: 0 !important;
+			}
+		}
 	}
 	.detailPageWrapperContainer {
-		width: 100vw;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		& > * {
+			padding: 0 !important;
+		}
+	}
+	.detailPageContent {
+		padding-left: 0 !important;
 	}
 	.mainDetailButtons
 		.emby-button:not([data-action="resume"], [data-action="play"]) {
@@ -68,69 +116,86 @@
 
 		&[title="Play"],
 		&[title="Resume"] {
-			background: rgb(255 255 255 / 0.2) !important;
-			color: white;
+			background: white !important;
+			color: black;
 			padding: 0.4em 1em !important;
-			gap: 0.2em;
+			gap: 0.6em;
 			margin-right: 0.5em;
+			width: var(--card-width);
 			&::after {
 				content: attr(title);
 				display: block;
 				opacity: 1;
 				background: transparent;
 				position: static;
-				font-weight: 400;
+				font-weight: 500;
 				height: fit-content;
 				font-size: 1.5em;
+				width: fit-content;
+			}
+			&:hover {
+				background: hsl(0, 0%, 80%) !important;
+				color: black;
 			}
 		}
 	}
 	.childrenItemsContainer.itemsContainer.vertical-list {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: 1em;
+		padding: 0;
 		.listItem {
 			.paper-icon-button-light {
 				&[data-action="menu"]::after {
 					content: "";
 					margin-left: 100%;
 				}
-				&:not([data-action="menu"]) {
+				&.listItemImageButton {
 					aspect-ratio: 1;
-					border-radius: $rounding-default;
+					border-radius: 100%;
+					background: $gradient-default;
+					color: white;
+					opacity: 0;
+					box-shadow: 0 0 0 10em rgb(255 255 255 / 0.1);
+					transition: opacity $transition-time-default;
 				}
 			}
 			&[data-type="Episode"] {
-				flex-direction: column;
 				padding: 0;
 				margin: 0 !important;
-				background: rgb(0 0 0 / 0.5);
-				border-radius: $rounding-default;
-				transition: background $transition-time-default;
-				&:hover {
-					background: rgb(0 0 0 / 0.7);
+				background: transparent !important;
+				& .listItem-content {
+					display: grid;
+					grid-template-columns: 25% 1fr 15%;
+					align-content: center;
+					align-items: center;
+					&:hover {
+						.listItemImageButton {
+							opacity: 1;
+						}
+					}
 				}
 			}
 
-			&-content {
-				flex-direction: column;
-			}
+			// 	&-content {
+			// 		flex-direction: column;
+			// 	}
 			&Image-large {
-				width: 100%;
-				padding: 0 !important;
-				margin: 0 !important;
-			}
-			&-overview {
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				text-align: start;
-				width: 100%;
+				justify-self: center;
+				margin: 2em !important;
+				// margin: 0 !important;
+				border-radius: $rounding-default;
 				overflow: hidden;
+				height: 12em;
 			}
+			// 	&-overview {
+			// 		text-overflow: ellipsis;
+			// 		white-space: nowrap;
+			// 		text-align: start;
+			// 		width: 100%;
+			// 		overflow: hidden;
+			// 	}
 
-			&Body {
-				width: 95%;
-			}
+			// 	&Body {
+			// 		width: 95%;
+			// 	}
 		}
 	}
 	.listItem {
@@ -140,25 +205,77 @@
 		flex-flow: row !important;
 		grid-column: auto / span 3;
 	}
+	.detailsGroupItem {
+		max-width: 100% !important;
+	}
+	.detailSection {
+		display: grid;
+		grid-template-areas:
+			"content selector"
+			"detailGroup detailGroup"
+			"recording recording";
+		grid-template-columns: 1fr 40%;
+		gap: 2em;
+		.itemDetailsGroup {
+			grid-area: detailGroup;
+		}
+		.recordingFields {
+			grid-area: recording;
+		}
+		.detailSectionContent {
+			grid-area: content;
+		}
+		.trackSelections {
+			grid-area: selector;
+		}
+	}
+	.tagline {
+		border-left: 0.25em solid rgb(255 255 255);
+		padding: 0 0.5em;
+		color: white;
+	}
+	// Episode Page
+	&:has(.parentName a[data-type="Series"]):not(:has(.listItem)) {
+		--card-width: 24vw;
+		.detailPagePrimaryContainer {
+			margin-top: 8.5vh;
+		}
+		.detailRibbon {
+			height: 43vh;
+		}
+	}
 }
 
 // mobile
 .layout-mobile #itemDetailPage {
+	--card-width: 100%;
 	.itemBackdrop {
 		position: absolute !important;
-		width: calc(100vw + 20px);
-		height: 80vh !important;
-		top: 0%;
-		left: -10px;
-		filter: blur($filter-blur-default) brightness(50%);
+		width: 100vw;
+		height: 90vh !important;
+		top: 0;
+		left: 0;
+		filter: brightness(65%);
 		margin-top: 0 !important;
 		mask-image: linear-gradient(to bottom, black, transparent);
 		-webkit-mask-image: linear-gradient(to bottom, black, transparent);
-		background-image: $gradient-default;
+	}
+	&:has(.parentName a[data-type="Series"]):not(:has(.listItem)) {
+		.detailRibbon {
+			height: 60vh;
+			--card-width: 100%;
+			.detailImageContainer .card{
+				max-width: 80vw !important;
+				min-width: 80vw !important;
+			}
+		}
+		.itemBackdrop{
+			height: 55vh !important;
+		}
 	}
 	.detail {
 		&Ribbon {
-			height: 70vh;
+			height: 90vh;
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
@@ -171,9 +288,9 @@
 			padding: 0 !important;
 			.card {
 				top: 0;
-				max-width: 50vw !important;
-				min-width: 50vw;
-				margin: 0 !important;
+				max-width: 60vw !important;
+				min-width: 60vw;
+				margin: auto !important;
 				position: static !important;
 				transform: none;
 				filter: none !important;
@@ -182,6 +299,15 @@
 					box-shadow: none;
 				}
 			}
+		}
+		&Section {
+			display: flex;
+			flex-direction: column;
+			margin-top: 2em;
+			font-size: 1.3em;
+		}
+		&PageContent {
+			padding-right: 0;
 		}
 	}
 	.itemMiscInfo {
@@ -200,20 +326,17 @@
 		padding: 0 !important;
 	}
 	.mainDetailButtons {
-		gap: 1em !important;
-		width: 100%;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		overflow: auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+		row-gap: 0.5em !important;
+		column-gap: 0.5em !important;
+		// width: 100%;
+		// flex-wrap: nowrap;
+		// justify-content: flex-start;
+		// overflow: auto;
 		.emby-button[title="Play"],
 		.emby-button[title="Resume"] {
-			border: none !important;
-			background: transparent !important;
-			padding: 0.7em;
-			overflow: visible;
-			&::after {
-				all: unset !important;
-			}
+			width: 100%;
 		}
 	}
 	.childrenItemsContainer.itemsContainer.vertical-list {
