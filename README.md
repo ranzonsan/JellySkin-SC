@@ -5,10 +5,11 @@
 ### 适配简繁中文、日语和韩语。This repo is just adapted to Chinese, Japanese and Korean.
 
 ### Fork自@prayag17。Forked from @prayag17.
+### 已合并v12.5.0代码，适配Jellyfin 10.9.x
 
 # ℹ️ 使用方法
 
-> [!重要提醒]
+> [!important]
 > JellySkin需要Chrome 105、Edge 105、Safari 15.4、Firefox 121、Opera 91及以上版本和其他支持基线（Baseline）2023 css功能的浏览器以正常显示。
 
 - 将以下代码粘贴至"设置->控制台->常规->自定义CSS代码"中，然后点击保存，JellySkin会在几分钟内自动应用，并覆盖所有用户的自定义CSS。如果要停止使用JellySkin，清除“自定义CSS代码”然后点击保存即可。
