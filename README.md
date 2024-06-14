@@ -5,7 +5,7 @@
 ### 适配简繁中文、日语和韩语。This repo is just adapted to Chinese, Japanese and Korean.
 
 ### Fork自@prayag17。Forked from @prayag17.
-### 已合并v12.5.0代码，适配Jellyfin 10.9.x
+### 已合并v12.5.1代码，适配Jellyfin 10.9.x
 
 # ℹ️ 使用方法
 
